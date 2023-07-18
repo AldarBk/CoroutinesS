@@ -62,3 +62,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+private fun loadDD(city: String, callback: (Int) -> Unit) {
+    thread {
+        handler.post {
+            Toast.makeText(
+                this,
+                getString(R.string.loading_temperature_toast, city),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+        Thread.sleep(5000)
+        handler.post {
+            callback.invoke(17)
+        }
+    }
+}
+}
